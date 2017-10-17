@@ -9,14 +9,14 @@
 import Cocoa
 import AppKit
 
-protocol SpaceKeyPressProtocol {
+protocol KeyPressProtocol {
     func didPressSpaceKey(child: MainView)
     func didPressEnterKey(child: MainView)
 }
 
 class MainView: NSView {
     
-    var delegate: SpaceKeyPressProtocol?
+    var delegate: KeyPressProtocol?
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

@@ -706,34 +706,63 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="pabloTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl" customClass="MainView" customModule="pabloTimer" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="417"/>
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="MainView" customModule="pabloTimer" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="1280"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fmi-ON-fAo">
-                                <rect key="frame" x="-2" y="0.0" width="484" height="30"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Change this" id="waa-f3-zRF">
+                                <rect key="frame" x="6" y="390" width="788" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="30U-Gz-f9y"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Change this" id="waa-f3-zRF">
+                                    <font key="font" metaFont="system" size="150"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wqd-Up-uvX">
+                                <rect key="frame" x="252" y="540" width="296" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="py2-yz-Azg"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Press Space for more time" id="Eni-rn-ZUt">
                                     <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ax3-GJ-GzB">
+                                <rect key="frame" x="338" y="890" width="124" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rnJ-mX-F5t"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="hss-u1-NwP">
+                                    <font key="font" metaFont="system" size="50"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fmi-ON-fAo" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="8y2-K3-LNR"/>
-                            <constraint firstItem="fmi-ON-fAo" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" id="Laf-BT-z76"/>
-                            <constraint firstItem="fmi-ON-fAo" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Pa9-88-R7b"/>
-                            <constraint firstItem="fmi-ON-fAo" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" id="jVy-WK-DPf"/>
+                            <constraint firstItem="Wqd-Up-uvX" firstAttribute="top" secondItem="fmi-ON-fAo" secondAttribute="bottom" constant="-200" id="30e-b3-RTN"/>
+                            <constraint firstItem="fmi-ON-fAo" firstAttribute="top" secondItem="ax3-GJ-GzB" secondAttribute="bottom" id="7pN-bb-fu3"/>
+                            <constraint firstItem="Wqd-Up-uvX" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="LKy-KA-13F"/>
+                            <constraint firstItem="fmi-ON-fAo" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Lnx-hs-cdF"/>
+                            <constraint firstItem="fmi-ON-fAo" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="asV-4t-iRz"/>
+                            <constraint firstItem="ax3-GJ-GzB" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="lhb-bl-Ee5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clueLabel" destination="ax3-GJ-GzB" id="OIA-IX-gLC"/>
                         <outlet property="mainView" destination="m2S-Jp-Qdl" id="oe8-ag-CtP"/>
+                        <outlet property="promptField" destination="Wqd-Up-uvX" id="3dg-Rf-B4S"/>
                         <outlet property="timerLabel" destination="fmi-ON-fAo" id="RAv-iE-Fyo"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1138.5"/>
+            <point key="canvasLocation" x="75" y="1138"/>
         </scene>
     </scenes>
 </document>

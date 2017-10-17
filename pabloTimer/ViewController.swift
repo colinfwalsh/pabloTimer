@@ -9,10 +9,12 @@
 import Cocoa
 import AppKit
 
-class ViewController: NSViewController, SpaceKeyPressProtocol, TimerProtocol {
+class ViewController: NSViewController, KeyPressProtocol, TimerProtocol {
     
     @IBOutlet var mainView: MainView!
     @IBOutlet weak var timerLabel: NSTextField!
+    @IBOutlet weak var promptField: NSTextField!
+    @IBOutlet weak var clueLabel: NSTextField!
     
     var timer = TimerClass()
     
@@ -22,7 +24,7 @@ class ViewController: NSViewController, SpaceKeyPressProtocol, TimerProtocol {
     
     private func textToDisplay(for timeRemaining: TimeInterval) -> String {
         if timeRemaining == 0 {
-            return "Done!"
+            return "Done"
         }
         
         let minutesRemaining = floor(timeRemaining / 60)
@@ -34,31 +36,46 @@ class ViewController: NSViewController, SpaceKeyPressProtocol, TimerProtocol {
         return timeRemainingDisplay
     }
     
+    func setTextcolor(for timeRemaining: TimeInterval) -> NSColor{
+        let percentageComplete = 100 - (timeRemaining / 360 * 100)
+        
+        switch percentageComplete {
+        case 0..<50:
+            return NSColor.red
+        default:
+            return NSColor.black
+        }
+    }
+    
     func timeRemainingOnTimer(_ timer: TimerClass, timeRemaining: TimeInterval) {
         updateDisplay(for: timeRemaining)
+        timerLabel.backgroundColor = setTextcolor(for: timeRemaining)
     }
     
     func timerHasFinished(_ timer: TimerClass) {
-        print("timer finished")
+        clueLabel.stringValue = "The clue is: "
+        timerLabel.stringValue = "K"
     }
     
-    func didPressSpaceKey(child: MainView) {
-        timer.resetTimer()
-        updateDisplay(for: 120)
+    func didPressSpaceKey(child:
+        MainView) {
+            timer.duration = 120
+            timer.startTimer()
+            promptField.stringValue = "Press Space for more time"
     }
     
     func didPressEnterKey(child: MainView) {
-        if timer.isPaused {
-            timer.resumeTimer()
-        } else {
-            timer.duration = 120
-            timer.startTimer()
-        }
+        timer.resetTimer()
+        updateDisplay(for: 120)
+        promptField.stringValue = "FIND THE CLUE"
+        clueLabel.stringValue = ""
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        promptField.stringValue = "FIND THE CLUE"
+        clueLabel.stringValue = ""
         updateDisplay(for: 120)
         timer.delegate = self
         self.mainView.delegate = self
